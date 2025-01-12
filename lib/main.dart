@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magic_8_ball/respostas.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +56,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String resposta = "Faz-me uma pergunta";
 
   void _incrementCounter() {
     setState(() {
@@ -64,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      resposta = Respostas.obterFraseAleatoria();
     });
   }
 
@@ -105,12 +106,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
             Text(
-              '$_counter',
+              resposta,
               style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.center,
+              textScaler: const TextScaler.linear(0.7),
+              maxLines: 2,
             ),
           ],
         ),
