@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        child: Stack(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -104,16 +104,18 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            Image.asset('assets/images/bola8.png', fit: BoxFit.cover),
+            Container(
+                child: Text(
               resposta,
               style: Theme.of(context).textTheme.headlineMedium,
               textAlign: TextAlign.center,
               textScaler: const TextScaler.linear(0.7),
               maxLines: 2,
-            ),
+            ))
           ],
+          alignment: AlignmentDirectional.center,
         ),
       ),
       floatingActionButton: FloatingActionButton(
