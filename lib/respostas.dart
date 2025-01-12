@@ -11,7 +11,7 @@ class Respostas {
     "Se queres uma resposta séria, tenta outra app.",
     "Com certeza! Só não me perguntes como ou quando.",
     "Sim, mas só se estiveres numa dimensão alternativa.",
-    "Sim, mas primeiro compra um bilhete de loteria.",
+    "Sim, mas primeiro jogue na loteria.",
     "Claro! O que pode dar errado, né?",
     "Com certeza! Mas se não der certo, não me culpes.",
     "Sim, desde que continues a acreditar em magia.",
