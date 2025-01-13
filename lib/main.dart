@@ -44,7 +44,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String resposta = "Faz-me uma pergunta";
 
-  void _shakeorbutton() {
+  void _shakeorbutton() async {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -52,6 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       resposta = Respostas.obterFraseAleatoria();
+    });
+    await Future.delayed(const Duration(seconds: 3));
+
+    setState(() {
+      resposta = "Faz uma nova pergunta";
     });
   }
 
