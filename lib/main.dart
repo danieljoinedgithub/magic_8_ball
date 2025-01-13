@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magic_8_ball/respostas.dart';
+import 'package:shake_gesture/shake_gesture.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.dark(),
+        colorScheme: const ColorScheme.dark(),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Bola 8 Mágica'),
@@ -43,7 +44,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String resposta = "Faz-me uma pergunta";
 
-  void _incrementCounter() {
+  void _shakeorbutton() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -63,43 +64,42 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Center(
-            child: Text(
-          widget.title,
-        )),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Stack(
-          alignment: AlignmentDirectional.center,
-          children: <Widget>[
-            Image.asset('assets/images/bola8.png', fit: BoxFit.cover),
-            Container(
-                width: 75,
-                child: Text(
-                  resposta,
-                  style: const TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                  textScaler: const TextScaler.linear(0.65),
-                  maxLines: 4,
-                  textWidthBasis: TextWidthBasis.longestLine,
-                ))
-          ],
+        appBar: AppBar(
+          // TRY THIS: Try changing the color here to a specific color (to
+          // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+          // change color while the other colors stay the same.
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Center(
+              child: Text(
+            widget.title,
+          )),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: <Widget>[
+              Image.asset('assets/images/bola8.png', fit: BoxFit.cover),
+              SizedBox(
+                  width: 75,
+                  child: Text(
+                    resposta,
+                    style: const TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                    textScaler: const TextScaler.linear(0.65),
+                    maxLines: 4,
+                    textWidthBasis: TextWidthBasis.longestLine,
+                  ))
+            ],
+          ),
+        ),
+        floatingActionButton: ShakeGesture(
+            child: const Text(""),
+            onShake: () {
+              _shakeorbutton();
+            }));
   }
 }
